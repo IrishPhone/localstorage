@@ -88,6 +88,13 @@
 		for(let i = 1; i < 7; i++){
 			$("#check" + i).prop('checked', localStorage.getItem("check" + i) == 'true' ? true : false );
 		}
+		if (localStorage.getItem('not_first_visit') == 'true') {
+			for(let i = 1; i < 7; i++){
+				$("#check" + i).attr('disabled', true);
+			}
+		} else {
+			localStorage.setItem('not_first_visit', 'true');
+		}
 	});
 	//
 	</script>

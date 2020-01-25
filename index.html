@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:200,400&display=swap" rel="stylesheet">
+    <title>Cookie</title>
+    <style type="text/css">
+    	.wrapper {
+			width: 300px;
+			margin: 10vw auto;
+		}
+    </style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="container">
+			<div class="jumbotron p-4">
+				<form >
+					<div class="form-group">
+						<label>Ваш город</label>
+						<div class="input-group mb-3">
+							<input id="city" type="text" class="form-control" placeholder="Введите город" aria-label="city" aria-describedby="basic-addon2">
+							<div class="input-group-append">
+								<button id="citychange" class="btn btn-primary" type="button">ok</button>
+							</div>
+						</div>
+					</div>
+				</form>
+				<form id="options">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="check1">
+						<label class="form-check-label" for="check1">не звонить мне</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="check2">
+						<label class="form-check-label" for="check2">не писать мне</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="check3">
+						<label class="form-check-label" for="check3">не приходить ко мне</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="check4">
+						<label class="form-check-label" for="check4">мне больше 12 лет</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="check5">
+						<label class="form-check-label" for="check5">мне меньше 60 лет</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="check6">
+						<label class="form-check-label" for="check6">я не женщина</label>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+	//
+	$("#citychange").click(function(){
+		localStorage.setItem('city', $("#city").val());
+	} );
+
+	$("#options :checkbox").change(function() {
+		localStorage.setItem(this.id, this.checked);	
+	});
+	
+	$(document).ready( function(){
+		$("#city").val( localStorage.getItem('city') );
+		for(let i = 1; i < 7; i++){
+			$("#check" + i).prop('checked', localStorage.getItem("check" + i) == 'true' ? true : false );
+		}
+	});
+	//
+	</script>
+</body>
+</html>
